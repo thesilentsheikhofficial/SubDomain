@@ -10,7 +10,7 @@ async function updatePrice(manual = false) {
 
     const priceToman = yearlyPriceUsd * usdToToman;
     document.getElementById("price-toman").textContent =
-      ≈ ${priceToman.toLocaleString()} تومان;
+      ≈ ${priceToman.toLocaleString("fa-IR")} تومان;
 
     const now = new Date();
     document.getElementById("last-update").textContent =
