@@ -1,84 +1,42 @@
-<!DOCTYPE html><html lang="fa">
+<!DOCTYPE html>
+<html lang="fa">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>خرید ساب‌دامین | SilentSheikh.online</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    .animate-fadeInUp {
-      animation: fadeInUp 1s ease-out;
-    }@keyframes glowPulse {
-  0%, 100% {
-    box-shadow: 0 0 10px rgba(59, 130, 246, 0.7);
-  }
-  50% {
-    box-shadow: 0 0 20px rgba(59, 130, 246, 1);
-  }
-}
-.hover-glow:hover {
-  animation: glowPulse 1s infinite;
-  transform: scale(1.05);
-}
-
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-gray-100 flex flex-col items-center justify-center min-h-screen font-sans">
   <header class="text-center mb-8 animate-fadeInUp">
     <h1 class="text-3xl font-bold text-gray-800">خرید ساب‌دامین از SilentSheikh.online</h1>
     <p class="text-gray-600 mt-2">راهی ساده و ارزان برای داشتن وب‌سایت اختصاصی</p>
-  </header>  <div class="bg-white rounded-2xl shadow-xl p-8 w-80 text-center transform transition hover:scale-105 animate-fadeInUp">
+  </header>
+
+  <div class="bg-white rounded-2xl shadow-xl p-8 w-80 text-center transform transition hover:scale-105 animate-fadeInUp">
     <h2 class="text-2xl font-semibold text-gray-700 mb-4">پلن Basic 🐪</h2>
     <p class="text-3xl text-blue-600 font-bold mb-4">$5 / سالانه</p>
     <p class="text-gray-500 mb-2" id="price-toman">در حال بارگذاری...</p>
     <p class="text-xs text-gray-400 mb-4" id="last-update">آخرین بروزرسانی: --</p>
-    <button onclick="manualUpdate()" class="mb-6 bg-gray-200 px-3 py-1 rounded-lg text-sm text-gray-700 hover:bg-gray-300 transition">بروزرسانی دستی 🔄</button>
+    <button onclick="manualUpdate()" id="refresh-btn"
+      class="mb-6 bg-gray-200 px-3 py-1 rounded-lg text-sm text-gray-700 hover:bg-gray-300 transition flex items-center justify-center gap-1">
+      <span id="refresh-icon">🔄</span> بروزرسانی دستی
+    </button>
     <ul class="text-right space-y-2 mb-6 text-gray-700">
       <li>✔ یک ساب‌دامین اختصاصی روی SilentSheikh.online</li>
       <li>✔ اتصال به GitHub Pages، Netlify، Vercel یا هاست شخصی</li>
       <li>✔ مناسب سایت شخصی، وبلاگ یا استارتاپ کوچک</li>
     </ul>
-    <a href="https://t.me/YOUR_TELEGRAM_CHANNEL" target="_blank" class="bg-blue-600 text-white px-6 py-2 rounded-xl text-lg font-medium shadow-md transition hover-glow">خرید از طریق تلگرام</a>
-  </div>  <footer class="mt-8 text-gray-500 text-sm animate-fadeInUp">
+    <a href="https://t.me/YOUR_TELEGRAM_CHANNEL" target="_blank"
+      class="bg-blue-600 text-white px-6 py-2 rounded-xl text-lg font-medium shadow-md transition hover-glow">
+      خرید از طریق تلگرام
+    </a>
+  </div>
+
+  <footer class="mt-8 text-gray-500 text-sm animate-fadeInUp">
     <p>© <span id="year"></span> SilentSheikh.online – تمام حقوق محفوظ است.</p>
-  </footer>  <script>
-    const yearlyPriceUsd = 5;
+  </footer>
 
-    async function updatePrice(manual = false) {
-      try {
-        const res = await fetch("https://api.exchangerate.host/latest?base=USD&symbols=IRR");
-        const data = await res.json();
-        const usdToRial = data.rates.IRR;
-        const usdToToman = usdToRial / 10;
-
-        const priceToman = yearlyPriceUsd * usdToToman;
-        document.getElementById("price-toman").textContent = ≈ ${priceToman.toLocaleString()} تومان;
-
-        const now = new Date();
-        document.getElementById("last-update").textContent = آخرین بروزرسانی: ${now.toLocaleTimeString("fa-IR")} ${manual ? "(دستی)" : ""};
-      } catch (e) {
-        document.getElementById("price-toman").textContent = "≈ ۴۶۷,۰۰۰ تومان (تخمینی)";
-        document.getElementById("last-update").textContent = "آخرین بروزرسانی: خطا در دریافت اطلاعات";
-      }
-    }
-
-    function manualUpdate() {
-      updatePrice(true);
-    }
-
-    document.addEventListener("DOMContentLoaded", () => {
-      document.getElementById("year").textContent = new Date().getFullYear();
-      updatePrice();
-      setInterval(updatePrice, 5 * 60 * 1000);
-    });
-  </script></body>
+  <script src="script.js"></script>
+</body>
 </html>
