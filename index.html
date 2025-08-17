@@ -1,42 +1,72 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>خرید ساب‌دامین | SilentSheikh.online</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://unpkg.com/lucide-static/font/lucide.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-gray-100 flex flex-col items-center justify-center min-h-screen font-sans">
+
+  <!-- هدر -->
   <header class="text-center mb-8 animate-fadeInUp">
     <h1 class="text-3xl font-bold text-gray-800">خرید ساب‌دامین از SilentSheikh.online</h1>
-    <p class="text-gray-600 mt-2">راهی ساده و ارزان برای داشتن وب‌سایت اختصاصی</p>
+    <p class="text-gray-600 mt-2">راهی ساده، سریع و ارزان برای داشتن وب‌سایت شخصی</p>
   </header>
 
-  <div class="bg-white rounded-2xl shadow-xl p-8 w-80 text-center transform transition hover:scale-105 animate-fadeInUp">
-    <h2 class="text-2xl font-semibold text-gray-700 mb-4">پلن Basic 🐪</h2>
-    <p class="text-3xl text-blue-600 font-bold mb-4">$5 / سالانه</p>
-    <p class="text-gray-500 mb-2">≈ ۵ دلار ثابت</p>
-    <p class="text-xs text-gray-400 mb-4">قیمت همیشگی و بدون تغییر</p>
-    
-    <ul class="text-right space-y-2 mb-6 text-gray-700">
-      <li>✔ یک ساب‌دامین اختصاصی روی SilentSheikh.online</li>
-      <li>✔ اتصال به GitHub Pages، Netlify، Vercel یا هاست شخصی</li>
-      <li>✔ مناسب سایت شخصی، وبلاگ یا استارتاپ کوچک</li>
-    </ul>
+  <!-- کارت پلن -->
+  <div class="bg-white rounded-2xl shadow-2xl p-8 w-full max-w-lg text-center animate-fadeInUp">
+    <h2 class="text-2xl font-bold text-gray-800 mb-4">پلن Basic 🐪</h2>
+    <p class="text-3xl text-blue-600 font-extrabold mb-2">$5 / سالانه</p>
+    <p class="text-gray-500 mb-2" id="price-toman">≈ در حال محاسبه...</p>
+    <p class="text-xs text-gray-400 mb-4" id="last-update">آخرین بروزرسانی: --</p>
 
-    <!-- توضیح هزینه نصب -->
-    <div class="bg-gray-50 border rounded-xl p-3 mb-6 text-sm text-gray-700 text-right">
-      <p>🔹 <b>نصب توسط خودتان:</b> رایگان</p>
-      <p>🔹 <b>نصب توسط تیم SilentSheikh:</b> +۲ دلار (یک‌بار)</p>
+    <!-- دکمه بروزرسانی -->
+    <button onclick="manualUpdate()" id="refresh-btn"
+      class="mb-6 bg-gray-200 px-4 py-2 rounded-lg text-sm text-gray-700 hover:bg-gray-300 transition flex items-center justify-center gap-1 mx-auto">
+      <span id="refresh-icon">🔄</span> بروزرسانی دستی
+    </button>
+
+    <!-- جدول مقایسه -->
+    <div class="border rounded-xl overflow-hidden text-sm mb-6 shadow-md">
+      <div class="flex bg-gray-100 font-semibold text-gray-700">
+        <div class="w-1/2 p-3 text-right">خدمات</div>
+        <div class="w-1/4 p-3 text-center bg-blue-50">۵ دلار</div>
+        <div class="w-1/4 p-3 text-center bg-green-50">۷ دلار</div>
+      </div>
+      <div class="flex border-t">
+        <div class="w-1/2 p-3 text-right">ساب‌دامین اختصاصی</div>
+        <div class="w-1/4 p-3 text-center text-green-600"><i class="lucide-check"></i></div>
+        <div class="w-1/4 p-3 text-center text-green-600"><i class="lucide-check"></i></div>
+      </div>
+      <div class="flex border-t">
+        <div class="w-1/2 p-3 text-right">اتصال DNS به GitHub / Vercel / Netlify</div>
+        <div class="w-1/4 p-3 text-center text-green-600"><i class="lucide-check"></i></div>
+        <div class="w-1/4 p-3 text-center text-green-600"><i class="lucide-check"></i></div>
+      </div>
+      <div class="flex border-t">
+        <div class="w-1/2 p-3 text-right">نصب و راه‌اندازی سایت توسط تیم ما</div>
+        <div class="w-1/4 p-3 text-center text-red-500"><i class="lucide-x"></i></div>
+        <div class="w-1/4 p-3 text-center text-green-600"><i class="lucide-check"></i></div>
+      </div>
     </div>
-    
-    <a href="https://t.me/YOUR_TELEGRAM_CHANNEL" target="_blank"
-      class="bg-blue-600 text-white px-6 py-2 rounded-xl text-lg font-medium shadow-md transition hover-glow">
-      خرید از طریق تلگرام
-    </a>
+
+    <!-- دکمه‌های خرید -->
+    <div class="flex flex-col space-y-3">
+      <a href="https://t.me/SilentSheikh?start=onlydomain" target="_blank"
+         class="bg-blue-600 text-white px-6 py-3 rounded-xl text-lg font-semibold shadow-md transition hover-glow">
+        خرید فقط ساب‌دامین – $5
+      </a>
+      <a href="https://t.me/SilentSheikh?start=withinstall" target="_blank"
+         class="bg-green-600 text-white px-6 py-3 rounded-xl text-lg font-semibold shadow-md transition hover-glow">
+        خرید همراه نصب – $7
+      </a>
+    </div>
   </div>
 
+  <!-- فوتر -->
   <footer class="mt-8 text-gray-500 text-sm animate-fadeInUp">
     <p>© <span id="year"></span> SilentSheikh.online – تمام حقوق محفوظ است.</p>
   </footer>
